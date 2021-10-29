@@ -29,6 +29,7 @@ h2{
 .contain{
     height: 196px;
     border: solid 2px rgb(185, 179, 179);
+    border-top: none;
 }
 a{
     text-decoration: none;
@@ -37,7 +38,12 @@ a{
 }
 .nav{
     width: 17%;
+    border-top: solid 2px rgb(185, 179, 179) ;
     
+}
+.nav h2{
+    border-left:solid 2px rgb(185, 179, 179) ;
+    border-right:solid 2px rgb(185, 179, 179);
 }
 .map{
     background-color: #fff;
