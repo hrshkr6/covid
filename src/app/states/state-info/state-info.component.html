@@ -1,0 +1,47 @@
+<div class="navigation" *ngIf="stateData">
+  <!-- <div *ngIf="button===0">
+        <p>Total State Cases</p>
+        <h1>{{stateData.totalStateCases}}</h1>
+      </div>
+      <div *ngIf="button===1">
+        <p>Total State Deaths</p>
+        <h1>{{stateData.totalStateDeaths}}</h1>
+      </div>
+      <div *ngIf="button===2">
+        <p>Total Recovery Rate</p>
+        <h1>{{stateData.Recovery_Proporation}}</h1>
+        </div> -->
+
+  <ng-container *ngFor="let stateDta of stateDataInfo; let i = index">
+    <div *ngIf="button === i">
+      <p>{{ stateDta.key }}</p>
+      <h1>{{ stateData[stateDta.value] }}</h1>
+    </div>
+  </ng-container>
+</div>
+
+<div *ngIf="stateData" class="info-top">
+<!--   <ng-container *ngFor="let stateDta of stateDataInfo; let i = index">
+    <button
+      (click)="onClick(i)"
+      [className]=" buttton===i ?'active':'inactive' "
+    >
+      {{ stateDta.heading }}
+    </button>
+  </ng-container> -->
+
+  <button (click)="onClick(0)" [className]="button===0? 'active':'inactive'">State Cases</button> 
+    <button (click)="onClick(1)" [className]="button===1? 'active':'inactive'">State Deaths</button> 
+    <button (click)="onClick(2)" [className]="button===2? 'active':'inactive'">Recovery</button>     
+</div>
+
+<div *ngIf="stateData" class="info-bottom">
+  <div>
+    <p>Total Recovered</p>
+    <h1>{{ stateData?.totalRecovered }}</h1>
+  </div>
+  <div>
+    <p>Positive Cases</p>
+    <h1>{{ stateData?.positiveCases }}</h1>
+  </div>
+</div>

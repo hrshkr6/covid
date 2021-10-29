@@ -1,0 +1,40 @@
+<div class="container">
+    
+    <div class="nav">
+
+        <h2>States</h2>
+        <cdk-virtual-scroll-viewport class="contain" itemSize=1>
+            
+            <ul *cdkVirtualFor="let state of statesName">
+                <a (click)="onStateChange(state)"><li>{{state}}</li></a>
+           </ul>
+        </cdk-virtual-scroll-viewport>
+        <div class="country-nav">
+            <p><strong>Countries</strong></p>
+            <p>District of Columbia. District of columbia</p>
+            <hr>
+            <div class="wid"></div>
+        </div>
+    </div>
+
+    <div class="map">
+        <app-state-map></app-state-map>
+    </div>
+
+     
+    <div class="outlet">
+        <app-state-info [stateData]="newStateData"></app-state-info>
+        <canvas id="my_firstChart">
+
+        </canvas>
+        <p>Lorem ipsum dolor sit amet <a href="">consectetur adipisicing elit</a> . Magnam, error vitae ipsa consequatur molestias eum vel pariatur earum.</p>
+    </div>
+        
+</div>
+
+ 
+    
+ 
+
+
+

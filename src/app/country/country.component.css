@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+     
+}
+
+.container div{
+    padding: 10px 30px;
+    background-color: #fff;
+    margin:10px 5px;
+    border: solid 2px rgb(185, 179, 179);
+}
+ 
+
+.container div:nth-of-type(1){
+    margin-left: 0;
+}
+.container div:nth-of-type(6){
+    margin-right: 0;
+}
+p,h1{
+    margin: 0;
+    text-align: center;
+}
