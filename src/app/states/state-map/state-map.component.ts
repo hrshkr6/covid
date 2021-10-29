@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-state-map',
@@ -6,11 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./state-map.component.css']
 })
 export class StateMapComponent implements OnInit {
-  lat:string="15.491997"
-  lng:string="73.81800065"
+  @Input()lat:string="15.491997"
+  @Input()lng:string="73.81800065"
+  
   constructor() { }
 
+  
+
   ngOnInit(): void {
+  
+    
   }
 
 

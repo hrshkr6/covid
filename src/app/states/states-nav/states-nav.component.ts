@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SatateGraphService } from '../state-graph/state-graph.service';
+ 
 import { StateData } from '../state-info/state';
 import { StateInfoService } from '../state-info/state-info.service';
 import {Chart, registerables} from 'chart.js'
 import {map} from "rxjs/operators"
+import states from '../../data/state-geo-data.json'
  
 
 import { StateService } from '../states.service';
@@ -19,12 +20,15 @@ export class StatesNavComponent implements OnInit {
    sName:string;
    statesName:string[]
    stateNameAndCode:{code:string,name:string}[];
+   lng1:string="73.81800065";
+   lat1:string="15.491997";
 
    chart :any;
 
+   stateGeo:{name:string,lat:string,lng:string}[]=states;
+
   constructor(private statesService : StateService,
-    private stateInfoService : StateInfoService,
-    private stateGraphService : SatateGraphService
+    private stateInfoService : StateInfoService 
     ) { }
 
   ngOnInit(): void {
@@ -70,6 +74,12 @@ export class StatesNavComponent implements OnInit {
 
 onStateChange(stateName:string){
   this.graphUpdate(stateName)
+  const geo = this.updateGeo(stateName)
+
+  
+  
+  
+
    
     this.sName=stateName;
 
@@ -91,28 +101,21 @@ onStateChange(stateName:string){
   
 }
 
-graphUpdate(name:string){
-   this.stateGraphService.getStateCode().pipe(map((response:any)=>{
-      return response.data;   
-   })).subscribe(res =>{
-       this.stateNameAndCode=res;
-     
-   const stateCode = this.stateNameAndCode.find(val=>{
-    return name===val.name;
+updateGeo(state:string){
+ 
+  const singleStateGeo= this.stateGeo.find(res=>{
+    return res.name===state;
   })
-  console.log(stateCode.code);
+  this.lat1 = singleStateGeo.lat;
+  this.lng1 = singleStateGeo.lng;
+  console.log(singleStateGeo)
+  
+}
+
+graphUpdate(name:string){
+   
      
-       
-       
-       
-   })
-
-   this.stateGraphService.getStateHistory('KA').pipe(map((response:any)=>{
-      console.log(response);
-      
-   })).subscribe(res=>{
-
-   })
+  
 }  
 
   
